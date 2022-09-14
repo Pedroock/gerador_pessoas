@@ -3,7 +3,7 @@ import random, requests, regex, lxml, os, pathlib, psycopg2
 from bs4 import BeautifulSoup
 
 
-def gerador_nome(quantidade, nome_duplo=False):
+def gerador_nome(quantidade, nome_duplo=True):
     # Só escolhe um nome e sobrenome, tendo certeza que os sobrenomes não se repitam
     lista_sobrenomes = []
     lista_nomes = []
@@ -190,7 +190,7 @@ def adicionar_database(dicionário, dbname, user, host, password):
     with conn:
         c = conn.cursor()
         # Exclui a table atual e cria uma nova
-        c.execute("""DROP TABLE pessoas;
+        c.execute("""DROP TABLE IF EXISTS pessoas;
         create table pessoas(NOME VARCHAR, IDADE VARCHAR, CPF VARCHAR, NATURALIDADE VARCHAR)""")
         # Adiciona informação para a table
         nome, idade, cpf, local = dicionário['NOME'], dicionário['IDADE'], dicionário['CPF'], dicionário['NATURALIDADE']

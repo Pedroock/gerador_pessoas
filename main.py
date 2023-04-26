@@ -164,13 +164,12 @@ def gerador_dicionario(quantidade, nome_duplo=False):
 
 def visualizador(dicionário):
     # Mostra o dicionário no terminal
-    cor= {'R': '\033[1;35m', 'C': '\033[1;036m', 'ND': '\033[m'}
-    print(f'{cor["R"]}NOME{cor["ND"]}  {cor["C"]}IDADE{cor["ND"]}  '
-          f'{cor["R"]}CPF{cor["ND"]}  {cor["C"]}NATURALIDADE{cor["ND"]}')
+    print(f'NOME  IDADE  '
+          f'CPF  NATURALIDADE')
     nome, idade, cpf, local = dicionário['NOME'], dicionário['IDADE'], dicionário['CPF'], dicionário['NATURALIDADE']
     for x in range(len(dicionário['NOME'])):
-        print(f'{cor["R"]}{nome[x]}{cor["C"]}  {cor["C"]}{idade[x]}{cor["C"]}'
-              f'  {cor["R"]}{cpf[x]}{cor["C"]}  {cor["C"]}{local[x]}{cor["ND"]}')
+        print(f'{nome[x]}  {idade[x]}'
+              f'  {cpf[x]}  {local[x]}')
 
 
 def arquivo_txt(dicionário):

@@ -2,14 +2,13 @@
 import main
 
 
-cor = {'vd': '\033[1;32m', 'vm': '\033[1;31m', 'a': '\033[1;34m', 'l': '\033[m'}
 while True:
     # Main
-    print(f'Esse é o {cor["a"]}GERADOR DE PESSOAS{cor["l"]}')
+    print(f'Esse é o GERADOR DE PESSOAS')
     print('Você pode:')
-    print(f'{cor["vd"]}[1]{cor["l"]} Gerar informações em conjunto')
-    print(f'{cor["vd"]}[2]{cor["l"]} Gerar informações separadas')
-    print(f'{cor["vd"]}[3]{cor["l"]} Fechar o programa')
+    print(f'[1] Gerar informações em conjunto')
+    print(f'[2] Gerar informações separadas')
+    print(f'[3] Fechar o programa')
     resposta_main = str(input('Você deseja? ')).strip()
     print('-='*25)
     if resposta_main == '1':
@@ -22,10 +21,10 @@ while True:
             while True:
                 # Ação dicionário
                 print('As informações foram geradas, você pode:')
-                print(f'{cor["vd"]}[1]{cor["l"]} Vizualizar no terminal')
-                print(f'{cor["vd"]}[2]{cor["l"]} Criar um .txt com as informações')
-                print(f'{cor["vd"]}[3]{cor["l"]} Adicionar uma informação a uma database PostgreSQL')
-                print(f'{cor["vd"]}[4]{cor["l"]} Voltar ao menu principal')
+                print(f'[1] Vizualizar no terminal')
+                print(f'[2] Criar um .txt com as informações')
+                print(f'[3] Adicionar uma informação a uma database PostgreSQL')
+                print(f'[4] Voltar ao menu principal')
                 resposta_dicionário = input('Você deseja? ')
                 if str(resposta_dicionário) == '1':
                     main.visualizador(dicionário)
@@ -33,7 +32,7 @@ while True:
                 elif str(resposta_dicionário) == '2':
                     main.arquivo_txt(dicionário)
                     print('-='*25)
-                    print(f'{cor["vd"]}O ARQUIVO FOI GERADO NO SEU DESKTOP{cor["l"]}')
+                    print(f'O ARQUIVO FOI GERADO NO SEU DESKTOP')
                     print('=-'*25)
                 elif str(resposta_dicionário) == '3':
                     print('-='*25)
@@ -45,28 +44,28 @@ while True:
                         main.adicionar_database(dicionário, dbname, user, host, password)
                     except Exception:
                         print('-='*25)
-                        print(f"{cor['vm']}Houve um erro{cor['l']}")
+                        print(f"Houve um erro")
                         print('=-'*25)
                     else:
                         print('-='*25)
-                        print(f'{cor["vd"]}Sucesso{cor["l"]}')
+                        print(f'Sucesso')
                         print('=-'*25)
                 elif str(resposta_dicionário) == '4':
                     print('-='*25)
                     break
                 else:
-                    print(f'{cor["vm"]}RESPOSTA INVÁLIDA{cor["l"]}')
+                    print(f'=RESPOSTA INVÁLIDA')
         else:
-            print(f'{cor["vm"]}RESPOSTA INVÁLIDA{cor["l"]}')
+            print(f'=RESPOSTA INVÁLIDA')
     elif resposta_main == '2':
         # Separadas
         while True:
             print('Você pode')
-            print(f'{cor["vd"]}[1]{cor["l"]} Criar uma lista de NOMES')
-            print(f'{cor["vd"]}[2]{cor["l"]} Criar uma lista de IDADES')
-            print(f'{cor["vd"]}[3]{cor["l"]} Criar uma lista de CPFs')
-            print(f'{cor["vd"]}[4]{cor["l"]} Criar uma lista de CIDADES')
-            print(f'{cor["vd"]}[5]{cor["l"]} Voltar ao menu principal')
+            print(f'[1] Criar uma lista de NOMES')
+            print(f'[2] Criar uma lista de IDADES')
+            print(f'[3] Criar uma lista de CPFs')
+            print(f'[4] Criar uma lista de CIDADES')
+            print(f'[5] Voltar ao menu principal')
             while True:
                 resposta_separadas = str(input("Você deseja? ")).strip()
                 if resposta_separadas == '5':
@@ -84,36 +83,36 @@ while True:
                     elif resposta_separadas == '4':
                         break
                     else:
-                        print(f'{cor["vm"]}RESPOSTA INVÁLIDA{cor["l"]}')
+                        print(f'=RESPOSTA INVÁLIDA')
                 else:
-                    print(f'{cor["vm"]}RESPOSTA INVÁLIDA{cor["l"]}')
+                    print(f'=RESPOSTA INVÁLIDA')
             if resposta_separadas == '1':
                 print('-='*25)
                 nomes = main.gerador_nome(quantidade)
-                print(f'{cor["a"]}NOME{cor["l"]}')
+                print(f'NOME')
                 for nome in nomes:
-                    print(f'{cor["a"]}{nome}{cor["l"]}')
+                    print(f'{nome}')
                 print('-='*25)
             if resposta_separadas == '2':
                 print('-='*25)
                 idades = main.gerador_idade(quantidade)
-                print(f'{cor["a"]}IDADE{cor["l"]}')
+                print(f'IDADE')
                 for idade in idades:
-                    print(f'{cor["a"]}{idade}{cor["l"]}')
+                    print(f'{idade}')
                 print('-='*25)
             if resposta_separadas == '3':
                 print('-='*25)
                 cpfs = main.gerador_cpf(quantidade)
-                print(f'{cor["a"]}CPF{cor["l"]}')
+                print(f'CPF')
                 for cpf in cpfs:
-                    print(f'{cor["a"]}{cpf}{cor["l"]}')
+                    print(f'{cpf}')
                 print('-='*25)
             if resposta_separadas == '4':
                 print('-='*25)
                 cidades = main.gerador_naturalidade(quantidade)
-                print(f'{cor["a"]}CIDADE{cor["l"]}')
+                print(f'CIDADE')
                 for cidade in cidades:
-                    print(f'{cor["a"]}{cidade}{cor["l"]}')
+                    print(f'{cidade}')
                 print('-='*25)
             if resposta_separadas == '5':
                 print('-='*25)
@@ -121,5 +120,5 @@ while True:
     elif resposta_main == '3':
         break
     else:
-        print(f'{cor["vm"]}RESPOSTA INVÁLIDA{cor["l"]}')
+        print(f'=RESPOSTA INVÁLIDA')
         print('-='*25)

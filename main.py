@@ -1,9 +1,9 @@
 # Um gerador de pessoas que terá nome completo, idade, cpf, naturalidade
-import random, requests, regex, lxml, os, pathlib, psycopg2
+import random, requests, regex, lxml, os, pathlib
 from bs4 import BeautifulSoup
 
 
-def gerador_nome(quantidade, nome_duplo=True):
+def gerador_nome(quantidade, nome_duplo=False):
     # Só escolhe um nome e sobrenome, tendo certeza que os sobrenomes não se repitam
     lista_sobrenomes = []
     lista_nomes = []
@@ -170,28 +170,3 @@ def visualizador(dicionário):
     for x in range(len(dicionário['NOME'])):
         print(f'{nome[x]}  {idade[x]}'
               f'  {cpf[x]}  {local[x]}')
-
-
-def arquivo_txt(dicionário):
-    # Cria um arquivo txt no desktop
-    desktop = pathlib.Path.home() / 'Desktop' / 'gerador.txt'
-    with open(desktop, 'w+') as f:
-        f.truncate()
-        f.write('NOME, IDADE, CPF, NATURALIDADE\n')
-        nome, idade, cpf, local = dicionário['NOME'], dicionário['IDADE'], dicionário['CPF'], dicionário['NATURALIDADE']
-        for x in range(len(dicionário['NOME'])):
-            f.write(f'{nome[x]}, {idade[x]}, {cpf[x]}, {local[x]}\n')
-
-
-def adicionar_database(dicionário, dbname, user, host, password):
-    # Joga os dados para uma database postgresql
-    conn = psycopg2.connect(dbname=dbname, user=user, host=host, password=password)
-    with conn:
-        c = conn.cursor()
-        # Exclui a table atual e cria uma nova
-        c.execute("""DROP TABLE IF EXISTS pessoas;
-        create table pessoas(NOME VARCHAR, IDADE VARCHAR, CPF VARCHAR, NATURALIDADE VARCHAR)""")
-        # Adiciona informação para a table
-        nome, idade, cpf, local = dicionário['NOME'], dicionário['IDADE'], dicionário['CPF'], dicionário['NATURALIDADE']
-        for x in range(len(dicionário['NOME'])):
-            c.execute("INSERT INTO pessoas values(%s, %s,%s, %s)", (nome[x], idade[x], cpf[x], local[x]))

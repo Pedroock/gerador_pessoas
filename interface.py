@@ -15,48 +15,8 @@ while True:
         # Conjunto
         resposta_conjunto = input('Você quer criar quantas pessoas? ')
         print('=-'*25)
-        if isinstance(int(resposta_conjunto), int):
-            # Cria o dicionário
-            dicionário = main.gerador_dicionario(int(resposta_conjunto))
-            while True:
-                # Ação dicionário
-                print('As informações foram geradas, você pode:')
-                print(f'[1] Vizualizar no terminal')
-                print(f'[2] Criar um .txt com as informações')
-                print(f'[3] Adicionar uma informação a uma database PostgreSQL')
-                print(f'[4] Voltar ao menu principal')
-                resposta_dicionário = input('Você deseja? ')
-                if str(resposta_dicionário) == '1':
-                    main.visualizador(dicionário)
-                    print('=-'*25)
-                elif str(resposta_dicionário) == '2':
-                    main.arquivo_txt(dicionário)
-                    print('-='*25)
-                    print(f'O ARQUIVO FOI GERADO NO SEU DESKTOP')
-                    print('=-'*25)
-                elif str(resposta_dicionário) == '3':
-                    print('-='*25)
-                    dbname = str(input('Qual o nome da database? ')).strip()
-                    user =  str(input('Qual o nome do usuário? ')).strip()
-                    host = str(input('Qual o host? ')).strip()
-                    password = str(input('Qual a senha? ')).strip()
-                    try:
-                        main.adicionar_database(dicionário, dbname, user, host, password)
-                    except Exception:
-                        print('-='*25)
-                        print(f"Houve um erro")
-                        print('=-'*25)
-                    else:
-                        print('-='*25)
-                        print(f'Sucesso')
-                        print('=-'*25)
-                elif str(resposta_dicionário) == '4':
-                    print('-='*25)
-                    break
-                else:
-                    print(f'=RESPOSTA INVÁLIDA')
-        else:
-            print(f'=RESPOSTA INVÁLIDA')
+        dicionário = main.gerador_dicionario(int(resposta_conjunto))
+        main.visualizador(dicionário=dicionário)
     elif resposta_main == '2':
         # Separadas
         while True:
